@@ -11,6 +11,8 @@ public class Publication {
     private String pubdate;
     private String pubname;
 
+    public Publication() {}
+
     public Publication(String collage, String uid, String pubdate, String pubname) {
         this.collage = collage;
         this.uid = uid;

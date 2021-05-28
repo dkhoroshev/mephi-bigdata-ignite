@@ -3,10 +3,12 @@ package bigdata.ignite.service;
 import bigdata.ignite.controller.model.Publication;
 import bigdata.ignite.dao.PublicationServiceRepository;
 import bigdata.ignite.model.PublicationEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class PublicationBusinessLogicService {
     private PublicationServiceRepository publicationServiceRepository;
 

@@ -3,6 +3,7 @@ package bigdata.ignite.controller;
 import bigdata.ignite.controller.model.VisitLog;
 import bigdata.ignite.model.VisitLogEntity;
 import bigdata.ignite.service.VisitLogBusinessLogicService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("visitlog")
 public class VisitLogServiceController {
+
+    @Autowired
     private VisitLogBusinessLogicService visitLogBusinessLogicService;
 
     public VisitLogServiceController(VisitLogBusinessLogicService visitLogBusinessLogicService) {

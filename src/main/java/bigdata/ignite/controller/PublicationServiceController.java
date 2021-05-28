@@ -3,8 +3,6 @@ package bigdata.ignite.controller;
 import bigdata.ignite.controller.model.Publication;
 import bigdata.ignite.model.PublicationEntity;
 import bigdata.ignite.service.PublicationBusinessLogicService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,13 +22,8 @@ public class PublicationServiceController {
         this.publicationBusinessLogicService = publicationBusinessLogicService;
     }
 
-//    @PostMapping(path = {"/create"}, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<PublicationEntity> createPublication(@RequestBody Publication publication) {
-//        PublicationEntity publicationEntity = publicationBusinessLogicService.processCreate(publication);
-//        return new ResponseEntity<>(publicationEntity, HttpStatus.OK);
-//    }
-    @PostMapping("/create")
-    public ResponseEntity<PublicationEntity> createPublication(@RequestBody Publication publication) {
+    @PostMapping(path = {"/create"}, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PublicationEntity> processCreate(@RequestBody Publication publication) {
         PublicationEntity publicationEntity = publicationBusinessLogicService.processCreate(publication);
         return new ResponseEntity<>(publicationEntity, HttpStatus.OK);
     }

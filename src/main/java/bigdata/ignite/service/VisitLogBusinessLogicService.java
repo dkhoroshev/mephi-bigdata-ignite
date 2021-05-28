@@ -3,10 +3,12 @@ package bigdata.ignite.service;
 import bigdata.ignite.controller.model.VisitLog;
 import bigdata.ignite.dao.VisitLogServiceRepository;
 import bigdata.ignite.model.VisitLogEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class VisitLogBusinessLogicService {
     private VisitLogServiceRepository visitLogServiceRepository;
 

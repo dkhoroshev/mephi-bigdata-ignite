@@ -18,6 +18,8 @@ public class VisitLog {
     private Date eventdate;
     private Integer inout;
 
+    public VisitLog() {}
+
     public VisitLog(Integer collage, Integer uid, Date eventdate, Integer inout) {
         this.collage = collage;
         this.uid = uid;

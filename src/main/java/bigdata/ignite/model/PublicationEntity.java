@@ -13,6 +13,8 @@ public class PublicationEntity {
     private String pubdate;
     private String pubname;
 
+    public PublicationEntity() {}
+
     public PublicationEntity(String collage, String uid, String pubdate, String pubname) {
         this.id = UUID.randomUUID();
         this.collage = collage;
