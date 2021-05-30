@@ -11,7 +11,7 @@ from itertools import groupby
 # sys.setdefaultencoding('utf8')
 
 faker = Faker()
-MAIN_ENTITY_COUNT = 1000    #Кол-во записей
+MAIN_ENTITY_COUNT = 4    #Кол-во записей
 USER_COUNT = 10
 
 # Создание списка университетов
@@ -42,6 +42,8 @@ for c,uids in comblist.items():
         for _ in range(random.randrange(MAIN_ENTITY_COUNT)):
             startdate=faker.date_time_ad(start_datetime='-5y')
             enddate=startdate+datetime.timedelta(hours=random.randrange(5))
+            # time.append('{ \"collage\": '+ str(c) + ', \"uid\": ' + str(uid) + ', \"eventdate\": \"' + str(startdate) + '\", \"inout\": 1 }\n')
+            # time.append('{ \"collage\": '+ str(c) + ', \"uid\": ' + str(uid) + ', \"eventdate\": \"' + str(enddate) + '\", \"inout\": 0 }\n')
             time.append(str(c) + ',' + str(uid) + ',' + str(startdate) + ',1\n')
             time.append(str(c) + ',' + str(uid) + ',' + str(enddate) + ',0\n')
 
@@ -54,8 +56,9 @@ ftime.close()
 publications = []
 for c,uids in comblist.items():
     for uid in uids:
-        for _ in range(random.randrange(MAIN_ENTITY_COUNT/40)):
+        for _ in range(random.randrange(MAIN_ENTITY_COUNT)):
             dateP=faker.date_between(start_date='-5y', end_date='today')
+            # publications.append('{ \"collage\": '+ str(c) + ', \"uid\": ' + str(uid) + ', \"pubdate\": \"' + str(dateP) + '\", \"pubname\": \"' + faker.text(max_nb_chars=50) + '\" }\n')
             publications.append(str(c) + ',' + str(uid) + ',' + str(dateP) + ',' + faker.text(max_nb_chars=50) + '\n')
 
 fpublications = open('publications.txt', 'w')
