@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ignite.*;
 import org.apache.ignite.compute.*;
 import org.apache.ignite.resources.IgniteInstanceResource;
-import org.jetbrains.annotations.Nullable;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -50,7 +49,11 @@ public class PublicationCountTask extends ComputeTaskSplitAdapter<String, Map> {
             counter.put(res.getData(),grouped);
         }
 
-        Map<String,String> mapOut = new HashMap(counter);
+        Map<String,String> mapOut = new HashMap<String, String>();
+        for (String key: counter.keySet()) {
+            mapOut.put(key,"Публикаций:" + counter.get(key).toString());
+        }
+
 //        System.out.println(">>> results on from compute job" + mapOut);
         return mapOut;
     }

@@ -18,7 +18,7 @@ public class VisitLogCountTask extends ComputeTaskSplitAdapter<String, Map> {
     public List<ComputeJob> split(int gridSize, String arg) {
         String[] count = arg.split(",");
         // Set date format
-        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy");
+        final SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy");
         log.info("Создаем таблицф для посещений");
         IgniteCache<Integer, VisitLog> visitLogIgniteCache = ignite.getOrCreateCache("visitlog");
 
@@ -26,7 +26,7 @@ public class VisitLogCountTask extends ComputeTaskSplitAdapter<String, Map> {
 
         int sizeVisits = visitLogIgniteCache.size();
         for (int i = 1; i < sizeVisits; i++) {
-            VisitLog visitLogCacheString = visitLogIgniteCache.get(i);
+            final VisitLog visitLogCacheString = visitLogIgniteCache.get(i);
             listVisitLogs.add(new ComputeJobAdapter() {
                 @Override
                 public Object execute() throws IgniteException {
@@ -58,7 +58,7 @@ public class VisitLogCountTask extends ComputeTaskSplitAdapter<String, Map> {
         Map<String,String> mapOut = new HashMap<>();
         for (String key: counter.keySet()) {
             Integer val = (Integer) Math.round(counter.get(key)/(1000 * 1000 * 60 * 60));
-            mapOut.put(key,val.toString());
+            mapOut.put(key,"Часов:" + val.toString());
         }
 //        System.out.println(">>> results on from compute job" + counter);
         return mapOut;

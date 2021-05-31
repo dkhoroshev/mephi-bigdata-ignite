@@ -13,9 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Compute {
     public static void main(String[] args) throws IgniteException {
@@ -109,15 +107,19 @@ public class Compute {
         Map<String, String> mapPiblications = compute.execute(PublicationCountTask.class, countItog);
         Map<String, String> mapVisitLog = compute.execute(VisitLogCountTask.class, countItog);
 
-        System.out.println("==> Result of compute Publication task\n" + mapPiblications);
-        System.out.println("==> Result of compute Visits task\n" + mapVisitLog);
+//        System.out.println("==> Result of compute Publication task\n" + mapPiblications);
+//        System.out.println("==> Result of compute Visits task\n" + mapVisitLog);
 
-        HashMap<String, String> mapResult = new HashMap(mapPiblications);
+        SortedMap<String, String> mapResult = new TreeMap(mapPiblications);
         mapVisitLog.forEach(
                 (key, value) -> mapResult.merge( key, value, (v1, v2) -> v1.equalsIgnoreCase(v2) ? v1 : v1 + "," + v2)
         );
-        System.out.println("Result of compute Publication task" + mapPiblications);
-        System.out.println("Result of compute Visits task" + mapVisitLog);
+
+        System.out.println("Result of compute task=" + mapResult.size());
+        for (Map.Entry<String, String> entry: mapResult.entrySet()) {
+            System.out.println(entry.getKey() + "=>" + entry.getValue());
+        }
+
         System.out.println(">> Compute task is executed, check for output on the server nodes.");
 
         // Сбрасываем кэш

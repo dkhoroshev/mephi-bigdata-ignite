@@ -3,7 +3,9 @@
 PUBFILE="./publications.txt"
 JFILE="./journal.txt"
 
-while read -r string; do
-    echo $string
-    curl -L -X POST 'http://localhost:8080/publication/create' -H 'Content-Type: application/json' --data-raw "$string"
-done < $PUBFILE
+[[ ! -f ${PUBFILE} ]] && python generator.py
+[[ ! -f ${JFILE} ]] && python generator.py
+
+[[ ! -f target/bigdata.ignitecompute-1.0-jar-with-dependencies.jar ]] && mvn compile package
+
+java -jar target/bigdata.ignitecompute-1.0-jar-with-dependencies.jar ${PUBFILE} ${JFILE}
