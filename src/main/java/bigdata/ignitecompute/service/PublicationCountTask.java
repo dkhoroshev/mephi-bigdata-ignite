@@ -1,4 +1,4 @@
-package bigdata.ignitecompute;
+package bigdata.ignitecompute.service;
 
 import bigdata.ignitecompute.model.Publication;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,8 @@ import java.util.*;
 @Slf4j
 public class PublicationCountTask extends ComputeTaskSplitAdapter<String, Map> {
     @IgniteInstanceResource
-    Ignite ignite;
+    private Ignite ignite;
+//    private IgniteCache<Integer, Publication> publicationIgniteCache = null;
 
     @Override
     public List<ComputeJob> split(int gridSize, String arg) {
@@ -55,6 +56,7 @@ public class PublicationCountTask extends ComputeTaskSplitAdapter<String, Map> {
         }
 
 //        System.out.println(">>> results on from compute job" + mapOut);
+//        publicationIgniteCache.destroy();
         return mapOut;
     }
 }

@@ -1,4 +1,4 @@
-package bigdata.ignitecompute;
+package bigdata.ignitecompute.service;
 
 import bigdata.ignitecompute.model.VisitLog;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,8 @@ import java.util.*;
 @Slf4j
 public class VisitLogCountTask extends ComputeTaskSplitAdapter<String, Map> {
     @IgniteInstanceResource
-    Ignite ignite;
+    private Ignite ignite;
+//    IgniteCache<Integer, VisitLog> visitLogIgniteCache;
 
     @Override
     public List<ComputeJob> split(int gridSize, String arg) {
@@ -61,6 +62,7 @@ public class VisitLogCountTask extends ComputeTaskSplitAdapter<String, Map> {
             mapOut.put(key,"Часов:" + val.toString());
         }
 //        System.out.println(">>> results on from compute job" + counter);
+//        visitLogIgniteCache.destroy();
         return mapOut;
     }
 }
