@@ -13,7 +13,6 @@ import java.util.*;
 public class VisitLogCountTask extends ComputeTaskSplitAdapter<String, Map> {
     @IgniteInstanceResource
     private Ignite ignite;
-//    IgniteCache<Integer, VisitLog> visitLogIgniteCache;
 
     @Override
     public List<ComputeJob> split(int gridSize, String arg) {
@@ -61,8 +60,7 @@ public class VisitLogCountTask extends ComputeTaskSplitAdapter<String, Map> {
             Integer val = (Integer) Math.round(counter.get(key)/(1000 * 1000 * 60 * 60));
             mapOut.put(key,"Часов:" + val.toString());
         }
-//        System.out.println(">>> results on from compute job" + counter);
-//        visitLogIgniteCache.destroy();
+
         return mapOut;
     }
 }

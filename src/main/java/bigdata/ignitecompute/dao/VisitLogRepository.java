@@ -43,6 +43,8 @@ public class VisitLogRepository {
         }
     }
 
-
+    public void destroy() {
+        this.visitLogCacheConfiguration.destroy();
+    }
 
 }

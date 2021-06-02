@@ -13,7 +13,6 @@ import java.util.*;
 public class PublicationCountTask extends ComputeTaskSplitAdapter<String, Map> {
     @IgniteInstanceResource
     private Ignite ignite;
-//    private IgniteCache<Integer, Publication> publicationIgniteCache = null;
 
     @Override
     public List<ComputeJob> split(int gridSize, String arg) {
@@ -55,8 +54,6 @@ public class PublicationCountTask extends ComputeTaskSplitAdapter<String, Map> {
             mapOut.put(key,"Публикаций:" + counter.get(key).toString());
         }
 
-//        System.out.println(">>> results on from compute job" + mapOut);
-//        publicationIgniteCache.destroy();
         return mapOut;
     }
 }

@@ -42,6 +42,7 @@ public class PublicationRepository {
         }
     }
 
-
-
+    public void destroy() {
+        this.publicationCacheConfiguration.destroy();
+    }
 }

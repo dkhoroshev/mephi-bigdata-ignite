@@ -2,7 +2,7 @@ package bigdata.ignitecompute.config;
 
 import org.apache.ignite.configuration.DataStorageConfiguration;
 import org.apache.ignite.configuration.IgniteConfiguration;
-import org.apache.ignite.logger.slf4j.Slf4jLogger;
+//import org.apache.ignite.logger.slf4j.Slf4jLogger;
 import org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi;
 import org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder;
 
@@ -25,7 +25,7 @@ public class IgniteConf {
 
         // Classes of custom Java logic will be transferred over the wire from this app.
         cfg.setPeerClassLoadingEnabled(true);
-        cfg.setGridLogger(new Slf4jLogger());
+//        cfg.setGridLogger(new Slf4jLogger());
         return cfg;
     }
 }
