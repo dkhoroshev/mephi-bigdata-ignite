@@ -1,25 +1,17 @@
 package bigdata.ignitecompute.dao;
 
-import bigdata.ignitecompute.config.IgniteConf;
 import bigdata.ignitecompute.model.Publication;
-import bigdata.ignitecompute.model.VisitLog;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
-import org.apache.ignite.configuration.CacheConfiguration;
-import org.apache.ignite.configuration.IgniteConfiguration;
-import org.apache.ignite.resources.IgniteInstanceResource;
 
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.UUID;
 
 public class PublicationRepository {
-    @IgniteInstanceResource
+
     private Ignite ignite;
     private IgniteCache<Integer, Publication> publicationCacheConfiguration;
-    private IgniteCache<Integer, VisitLog> visitLogCacheConfiguration;
-
 
     public PublicationRepository(Ignite ignite, String publicationCacheName) {
         this.publicationCacheConfiguration = ignite.getOrCreateCache(publicationCacheName);

@@ -3,14 +3,13 @@ package bigdata.ignitecompute.dao;
 import bigdata.ignitecompute.model.VisitLog;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
-import org.apache.ignite.resources.IgniteInstanceResource;
 
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class VisitLogRepository {
-    @IgniteInstanceResource
+
     private Ignite ignite;
     private IgniteCache<Integer, VisitLog> visitLogCacheConfiguration;
 
